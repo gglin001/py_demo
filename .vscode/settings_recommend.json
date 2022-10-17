@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/",
+    ],
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "python.formatting.provider": "black",
+}

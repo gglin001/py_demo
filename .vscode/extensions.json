@@ -1,0 +1,14 @@
+{
+    "recommendations": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools-extension-pack",
+        "llvm-vs-code-extensions.vscode-clangd",
+        "eamodio.gitlens",
+        "cheshirekow.cmake-format",
+        "esbenp.prettier-vscode",
+        "bungcip.better-toml",
+        "foxundermoon.shell-format",
+    ]
+}
