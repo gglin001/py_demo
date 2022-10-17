@@ -71,16 +71,8 @@ if __name__ == "__main__":
     ]
     cmdclass = {"build_ext": CMakeBuild}
     setup(
-        name='sample',
-        version=f"0.1.0",
-        description='sample mixin Python & C++ project',
-        author='Allen Guo',
-        author_email='guosonglin001@gmail.com',
         ext_modules=extensions,  # type: ignore
         cmdclass=cmdclass,
-        install_requires=[
-            'numpy',
-        ],
         package_dir={'': 'src'},
         packages=find_packages(where='src'),
     )

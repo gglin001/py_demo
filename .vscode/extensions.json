@@ -10,5 +10,6 @@
         "esbenp.prettier-vscode",
         "bungcip.better-toml",
         "foxundermoon.shell-format",
+        "tamasfe.even-better-toml",
     ]
 }

@@ -1,3 +1,11 @@
+[project]
+name = "sample"
+version = "0.1.0"
+description = 'sample mixin Python & C++ project'
+readme = "README.md"
+requires-python = ">=3.7"
+dependencies = ["numpy"]
+
 [build-system]
 requires = [
     "setuptools>=45",
@@ -20,6 +28,4 @@ write_to = "src/sample/_version.py"
 [tool.pytest.ini_options]
 minversion = "7.0.0"
 pythonpath = 'tests'
-testpaths = [
-    "tests",
-]
+testpaths = ["tests"]
