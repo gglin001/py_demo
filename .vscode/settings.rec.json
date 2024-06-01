@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/src",
+    ],
+    "cmake.configureSettings": {
+        "CMAKE_INSTALL_PREFIX": "${workspaceFolder}/src/sample",
+        "CMAKE_VERBOSE_MAKEFILE": "OFF",
+    },
+}

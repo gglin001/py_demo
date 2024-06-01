@@ -23,7 +23,7 @@ class CMakeBuild(build_ext):
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={cfg}",
             f"-DPython3_EXECUTABLE={sys.executable}",
-            f"-DCMAKE_INSTALL_PREFIX={here}/src/sample",
+            f"-DCMAKE_INSTALL_PREFIX={here}/src/py_demo",
         ]
         build_args = []
         # Adding CMake arguments set as environment variable
@@ -45,7 +45,7 @@ class CMakeBuild(build_ext):
         cmd = ["cmake"] + cmake_args + [f"-S{here}", f"-B{build_lib}"]
         subprocess.check_call(cmd, cwd=here)
         cmd = (
-            ["cmake", "--build"] + build_args + [f"{build_lib}", '--target', 'install']
+            ["cmake", "--build"] + build_args + [f"{build_lib}", "--target", "install"]
         )
         subprocess.check_call(cmd, cwd=here)
 
@@ -59,20 +59,20 @@ class CMakeBuild(build_ext):
             self.copy_file(src, dst)
 
         # TODO copy otherv files
-        # src = os.path.join(here, 'src', 'sample', 'lib')
-        # dst = os.path.join(os.path.realpath(self.build_lib), 'sample', 'lib')
+        # src = os.path.join(here, 'src', 'py_demo', 'lib')
+        # dst = os.path.join(os.path.realpath(self.build_lib), 'py_demo', 'lib')
         # self.copy_tree(src, dst)
 
 
 if __name__ == "__main__":
     here = pathlib.Path(__file__).parent.resolve()
     extensions = [
-        CMakeExtension("sample._C"),
+        CMakeExtension("py_demo._C"),
     ]
     cmdclass = {"build_ext": CMakeBuild}
     setup(
         ext_modules=extensions,  # type: ignore
         cmdclass=cmdclass,
-        package_dir={'': 'src'},
-        packages=find_packages(where='src'),
+        package_dir={"": "src"},
+        packages=find_packages(where="src"),
     )

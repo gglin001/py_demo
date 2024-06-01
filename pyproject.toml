@@ -1,9 +1,9 @@
 [project]
-name = "sample"
-version = "0.1.0"
-description = 'sample mixin Python & C++ project'
+name = "py_demo"
+dynamic = ["version"]
+description = 'py_demo mixin Python & C++ project'
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 dependencies = ["numpy"]
 
 [build-system]
@@ -16,14 +16,17 @@ requires = [
 ]
 build-backend = "setuptools.build_meta"
 
+# https://github.com/pypa/setuptools_scm
+[tool.setuptools_scm]
+write_to = "src/py_demo/_version.py"
+
+# TODO: replace with ruff
 [tool.black]
 skip-string-normalization = true
 
+# TODO: replace with ruff
 [tool.isort]
 profile = 'black'
-
-[tool.setuptools_scm]
-write_to = "src/sample/_version.py"
 
 [tool.pytest.ini_options]
 minversion = "7.0.0"

@@ -1,6 +1,6 @@
-# py-sampleproject
+# py-demo
 
-sample project with Python & C++
+py_demo project with Python & C++
 
 ## install in editable mode
 
