@@ -1,9 +1,9 @@
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.3.0
+    rev: v4.5.0
     hooks:
       - id: check-json
-        exclude: .vscode/settings_recommend.json
+        exclude: .vscode/settings.rec.json
       - id: check-merge-conflict
       - id: check-symlinks
       - id: check-toml
@@ -14,24 +14,19 @@ repos:
       - id: requirements-txt-fixer
       - id: mixed-line-ending
       - id: debug-statements
-  # TODO: replace with ruff
-  - repo: https://github.com/psf/black
-    rev: 22.10.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.4.7
     hooks:
-      - id: black
-  - repo: https://github.com/pycqa/isort
-    rev: 5.10.1
-    hooks:
-      - id: isort
-  # TODO: replace with udf hook
-  - repo: https://github.com/pocc/pre-commit-hooks
-    rev: v1.3.5
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format
+  - repo: local
     hooks:
       - id: clang-format
-        args: [-i, --style=file]
-      # - id: clang-tidy
-      # - id: oclint
-      # - id: uncrustify
-      # - id: cppcheck
-      # - id: cpplint
-  # TODO cmake-format
+        name: clang-format
+        language: python
+        entry: clang-format -i --style=file
+        types_or: [c, c++]
+        additional_dependencies:
+          - clang-format==18.1.0
+  # NOTE: no cmake-format applied, format on local

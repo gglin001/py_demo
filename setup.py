@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import os
 import pathlib
 import subprocess
@@ -18,6 +20,7 @@ class CMakeBuild(build_ext):
         os.makedirs(self.build_temp, exist_ok=True)
         os.makedirs(self.build_lib, exist_ok=True)
 
+        # TODO: support skip cmake building
         debug = int(os.environ.get("DEBUG", 0)) if self.debug is None else self.debug
         cfg = "Debug" if debug else "Release"
         cmake_args = [
@@ -58,7 +61,7 @@ class CMakeBuild(build_ext):
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             self.copy_file(src, dst)
 
-        # TODO copy otherv files
+        # TODO copy other files
         # src = os.path.join(here, 'src', 'py_demo', 'lib')
         # dst = os.path.join(os.path.realpath(self.build_lib), 'py_demo', 'lib')
         # self.copy_tree(src, dst)

@@ -1,3 +1,4 @@
+# https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 [project]
 name = "py_demo"
 dynamic = ["version"]
@@ -6,6 +7,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 dependencies = ["numpy"]
 
+# https://github.com/pypa/setuptools_scm
 [build-system]
 requires = [
     "setuptools>=45",
@@ -20,15 +22,26 @@ build-backend = "setuptools.build_meta"
 [tool.setuptools_scm]
 write_to = "src/py_demo/_version.py"
 
-# TODO: replace with ruff
-[tool.black]
-skip-string-normalization = true
-
-# TODO: replace with ruff
-[tool.isort]
-profile = 'black'
-
+# https://docs.pytest.org/en/stable/reference/customize.html
 [tool.pytest.ini_options]
 minversion = "7.0.0"
 pythonpath = 'tests'
 testpaths = ["tests"]
+
+# https://docs.astral.sh/ruff/settings/
+# https://docs.astral.sh/ruff/rules/
+# https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+fix = true
+exclude = [".cmake-format.py"]
+
+[tool.ruff.lint]
+select = ["I", "E4", "E7", "E9", "F"]
+ignore = []
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.lint.isort]
+known-local-folder = ["src"]
+required-imports = ["from __future__ import annotations"]
