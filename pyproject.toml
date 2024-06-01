@@ -45,3 +45,7 @@ quote-style = "double"
 [tool.ruff.lint.isort]
 known-local-folder = ["src"]
 required-imports = ["from __future__ import annotations"]
+
+# TODO: support more ruff rules
+# TODO: support more python tools
+# TODO: support mypy
