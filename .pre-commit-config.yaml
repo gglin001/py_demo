@@ -21,12 +21,12 @@ repos:
         args: [--fix]
       - id: ruff-format
   - repo: local
-    additional_dependencies:
-      - clang-format==18.1.0
     hooks:
       - id: clang-format
         name: clang-format
-        language: system
-        entry: clang-format -i, --style=file
+        language: python
+        entry: clang-format -i --style=file
         types_or: [c, c++]
+        additional_dependencies:
+          - clang-format==18.1.0
   # NOTE: no cmake-format applied, format on local
