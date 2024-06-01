@@ -1,7 +1,7 @@
 [project]
-name = "sample"
+name = "py_demo"
 version = "0.1.0"
-description = 'sample mixin Python & C++ project'
+description = 'py_demo mixin Python & C++ project'
 readme = "README.md"
 requires-python = ">=3.7"
 dependencies = ["numpy"]
@@ -23,7 +23,7 @@ skip-string-normalization = true
 profile = 'black'
 
 [tool.setuptools_scm]
-write_to = "src/sample/_version.py"
+write_to = "src/py_demo/_version.py"
 
 [tool.pytest.ini_options]
 minversion = "7.0.0"

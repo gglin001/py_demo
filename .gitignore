@@ -4,6 +4,6 @@ __pycache__/
 
 build/
 *.egg-info
-src/sample/_version.py
+src/py_demo/_version.py
 
 *.so

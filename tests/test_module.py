@@ -1,6 +1,6 @@
 import numpy as np
 
-from sample.module import exp_func
+from py_demo.module import exp_func
 
 
 def test_log_func():
