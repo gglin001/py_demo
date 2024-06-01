@@ -61,7 +61,7 @@ class CMakeBuild(build_ext):
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             self.copy_file(src, dst)
 
-        # TODO copy otherv files
+        # TODO copy other files
         # src = os.path.join(here, 'src', 'py_demo', 'lib')
         # dst = os.path.join(os.path.realpath(self.build_lib), 'py_demo', 'lib')
         # self.copy_tree(src, dst)
