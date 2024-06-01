@@ -46,6 +46,8 @@ quote-style = "double"
 known-local-folder = ["src"]
 required-imports = ["from __future__ import annotations"]
 
+# TODO: support cibuildwheel
+
 # TODO: support more ruff rules
 # TODO: support more python tools
 # TODO: support mypy
