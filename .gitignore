@@ -1,9 +1,12 @@
 __pycache__/
 
 .vscode/
+.cache/
 
 build/
 *.egg-info
 src/py_demo/_version.py
 
 *.so
+
+CMakeUserPresets.json

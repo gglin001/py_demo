@@ -1,17 +1,17 @@
 # https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 [project]
 name = "py_demo"
-dynamic = ["version"]
-description = 'py_demo mixin Python & C++ project'
+description = 'py_demo'
 readme = "README.md"
 requires-python = ">=3.10"
+dynamic = ["version"]
 dependencies = ["numpy"]
 
 # https://github.com/pypa/setuptools_scm
 [build-system]
 requires = [
-    "setuptools>=45",
-    "setuptools_scm[toml]>=6.2",
+    "setuptools>=64",
+    "setuptools_scm[toml]>=8",
     "wheel",
     "cmake",
     "ninja",
@@ -45,3 +45,7 @@ quote-style = "double"
 [tool.ruff.lint.isort]
 known-local-folder = ["src"]
 required-imports = ["from __future__ import annotations"]
+
+# TODO: support more ruff rules
+# TODO: support more python tools
+# TODO: support mypy
