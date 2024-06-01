@@ -7,3 +7,5 @@ build/
 src/py_demo/_version.py
 
 *.so
+
+CMakeUserPresets.json
