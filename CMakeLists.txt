@@ -19,16 +19,15 @@ option(USE_SYSTEM_LIBS "use system libs or not" OFF)
 include(FetchContent)
 set(FETCHCONTENT_QUIET FALSE)
 
-# TODO: use nanobind instead ?
-# TODO: support using system pybind11
-# pybind11
 if(USE_SYSTEM_LIBS)
   find_package(pybind11 CONFIG REQUIRED)
 else()
+  # TODO: use nanobind instead ?
+  # pybind11
   FetchContent_Declare(
     pybind11
     GIT_REPOSITORY https://github.com/pybind/pybind11
-    GIT_TAG v2.11.1
+    GIT_TAG v2.12.0
     GIT_SHALLOW TRUE)
   if(NOT pybind11_POPULATED)
     FetchContent_Populate(pybind11)
