@@ -14,6 +14,7 @@ repos:
       - id: requirements-txt-fixer
       - id: mixed-line-ending
       - id: debug-statements
+  # TODO: replace with ruff
   - repo: https://github.com/psf/black
     rev: 22.10.0
     hooks:
@@ -22,6 +23,7 @@ repos:
     rev: 5.10.1
     hooks:
       - id: isort
+  # TODO: replace with udf hook
   - repo: https://github.com/pocc/pre-commit-hooks
     rev: v1.3.5
     hooks:
