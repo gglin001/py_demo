@@ -30,3 +30,4 @@ repos:
         additional_dependencies:
           - clang-format==18.1.0
   # NOTE: no cmake-format applied, format on local
+  # TODO: add more python tools https://github.com/PyCQA
