@@ -1,8 +1,9 @@
 __pycache__/
+
+.vscode/
+
 build/
+*.egg-info
+src/sample/_version.py
 
 *.so
-*.egg-info
-
-.vscode/settings.json
-src/sample/_version.py
