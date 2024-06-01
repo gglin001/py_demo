@@ -15,6 +15,14 @@
         "CMAKE_VERBOSE_MAKEFILE": "OFF",
         "USE_SYSTEM_LIBS": true
       }
+    },
+    {
+      "name": "release",
+      "inherits": "debug",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "USE_SYSTEM_LIBS": false
+      }
     }
   ]
 }
