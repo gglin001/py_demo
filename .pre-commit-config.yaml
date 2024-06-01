@@ -1,3 +1,9 @@
+exclude: |
+  (?x)(
+      .cmake-format.py |
+      .vscode/(.)* |
+      LICENSE
+  )
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.5.0
@@ -29,5 +35,12 @@ repos:
         types_or: [c, c++]
         additional_dependencies:
           - clang-format==18.1.0
+  #
   # NOTE: no cmake-format applied, format on local
+  #
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+
   # TODO: add more python tools https://github.com/PyCQA

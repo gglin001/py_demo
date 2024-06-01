@@ -36,7 +36,7 @@ fix = true
 exclude = [".cmake-format.py"]
 
 [tool.ruff.lint]
-select = ["I", "E4", "E7", "E9", "F"]
+select = ["I", "E", "F"]
 ignore = []
 
 [tool.ruff.format]
@@ -46,6 +46,15 @@ quote-style = "double"
 known-local-folder = ["src"]
 required-imports = ["from __future__ import annotations"]
 
+# https://mypy.readthedocs.io/en/stable/config_file.html
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = false
+warn_unused_configs = true
+exclude = ['setup.py']
+files = ["src/**/*.py", "tests/**/*.py"]
+
+# TODO: support cibuildwheel
+
 # TODO: support more ruff rules
 # TODO: support more python tools
-# TODO: support mypy
