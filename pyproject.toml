@@ -5,7 +5,6 @@ description = "py_demo"
 readme = "README.md"
 requires-python = ">=3.11"
 dynamic = ["version"]
-dependencies = ["numpy"]
 
 # https://github.com/pypa/setuptools_scm
 [build-system]

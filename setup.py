@@ -8,6 +8,14 @@ import sys
 from setuptools import Extension, find_packages, setup
 from setuptools.command.build_ext import build_ext
 
+HERE = pathlib.Path(__file__).parent.resolve()
+
+
+def _get_requires():
+    with open("requirements.txt", "r") as f:
+        install_requires = f.readlines()
+    return install_requires
+
 
 class CMakeExtension(Extension):
     def __init__(self, name, sourcedir=""):
@@ -25,7 +33,7 @@ class CMakeBuild(build_ext):
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={cfg}",
             f"-DPython3_EXECUTABLE={sys.executable}",
-            f"-DCMAKE_INSTALL_PREFIX={here}/src/py_demo",
+            f"-DCMAKE_INSTALL_PREFIX={HERE}/src/py_demo",
         ]
         build_args = []
         # Adding CMake arguments set as environment variable
@@ -44,12 +52,12 @@ class CMakeBuild(build_ext):
             raise Exception("please install ninja first.")
 
         build_lib = self.build_temp
-        cmd = ["cmake"] + cmake_args + [f"-S{here}", f"-B{build_lib}"]
-        subprocess.check_call(cmd, cwd=here)
+        cmd = ["cmake"] + cmake_args + [f"-S{HERE}", f"-B{build_lib}"]
+        subprocess.check_call(cmd, cwd=HERE)
         cmd = (
             ["cmake", "--build"] + build_args + [f"{build_lib}", "--target", "install"]
         )
-        subprocess.check_call(cmd, cwd=here)
+        subprocess.check_call(cmd, cwd=HERE)
 
         # copy extensions
         for ext in self.extensions:
@@ -61,14 +69,12 @@ class CMakeBuild(build_ext):
             self.copy_file(src, dst)
 
         # TODO: copy other files
-        # src = os.path.join(here, 'src', 'py_demo', 'lib')
+        # src = os.path.join(HERE, 'src', 'py_demo', 'lib')
         # dst = os.path.join(os.path.realpath(self.build_lib), 'py_demo', 'lib')
         # self.copy_tree(src, dst)
 
 
 if __name__ == "__main__":
-    here = pathlib.Path(__file__).parent.resolve()
-
     # NOTE: expect skip cmake building only happens for local debugging, c libs
     # are built manually
     skip_cmake = int(os.environ.get("SKIP_CMAKE", 0))
@@ -78,6 +84,7 @@ if __name__ == "__main__":
 
     cmdclass = {"build_ext": CMakeBuild}
     setup(
+        install_requires=_get_requires(),
         ext_modules=extensions,
         cmdclass=cmdclass,
         package_dir={"": "src"},
