@@ -8,6 +8,14 @@ demo project with Python & C++
 pip install -e .
 ```
 
+for local debuging
+
+```sh
+DEBUG=1 pip install -e .
+# or
+DEBUG=1 SKIP_CMAKE=1 pip install -e .
+```
+
 ## Reference
 
 - https://packaging.python.org/en/latest/
