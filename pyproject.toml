@@ -1,11 +1,14 @@
 # https://packaging.python.org/en/latest/guides/writing-pyproject-toml/
 [project]
 name = "py_demo"
-description = 'py_demo'
+description = "py_demo"
 readme = "README.md"
-requires-python = ">=3.11"
+authors = [{ name = "Allen Guo", email = "guosonglin001@gmail.com" }]
+requires-python = ">=3.10"
 dynamic = ["version"]
-dependencies = ["numpy"]
+
+[project.urls]
+Homepage = "https://github.com/gglin001/py_demo"
 
 # https://github.com/pypa/setuptools_scm
 [build-system]
@@ -26,7 +29,7 @@ write_to = "src/py_demo/_version.py"
 # https://docs.pytest.org/en/stable/reference/customize.html
 [tool.pytest.ini_options]
 minversion = "7.0.0"
-pythonpath = 'tests'
+pythonpath = "tests"
 testpaths = ["tests"]
 
 # https://docs.astral.sh/ruff/settings/
@@ -52,7 +55,7 @@ required-imports = ["from __future__ import annotations"]
 python_version = "3.11"
 warn_return_any = false
 warn_unused_configs = true
-exclude = ['setup.py']
+exclude = ["setup.py"]
 files = ["src/**/*.py", "tests/**/*.py"]
 
 # https://cibuildwheel.pypa.io/en/stable/options/
