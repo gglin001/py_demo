@@ -20,7 +20,6 @@ class CMakeBuild(build_ext):
         os.makedirs(self.build_temp, exist_ok=True)
         os.makedirs(self.build_lib, exist_ok=True)
 
-        # TODO: support skip cmake building
         debug = int(os.environ.get("DEBUG", 0)) if self.debug is None else self.debug
         cfg = "Debug" if debug else "Release"
         cmake_args = [
@@ -61,7 +60,7 @@ class CMakeBuild(build_ext):
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             self.copy_file(src, dst)
 
-        # TODO copy other files
+        # TODO: copy other files
         # src = os.path.join(here, 'src', 'py_demo', 'lib')
         # dst = os.path.join(os.path.realpath(self.build_lib), 'py_demo', 'lib')
         # self.copy_tree(src, dst)
@@ -69,12 +68,17 @@ class CMakeBuild(build_ext):
 
 if __name__ == "__main__":
     here = pathlib.Path(__file__).parent.resolve()
-    extensions = [
-        CMakeExtension("py_demo._C"),
-    ]
+
+    # NOTE: expect skip cmake building only happens for local debugging, c libs
+    # are built manually
+    skip_cmake = int(os.environ.get("SKIP_CMAKE", 0))
+    extensions = []
+    if not skip_cmake:
+        extensions.append(CMakeExtension("py_demo._C"))
+
     cmdclass = {"build_ext": CMakeBuild}
     setup(
-        ext_modules=extensions,  # type: ignore
+        ext_modules=extensions,
         cmdclass=cmdclass,
         package_dir={"": "src"},
         packages=find_packages(where="src"),
