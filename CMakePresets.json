@@ -20,8 +20,7 @@
       "name": "release",
       "inherits": "debug",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "USE_SYSTEM_LIBS": false
+        "CMAKE_BUILD_TYPE": "Release"
       }
     }
   ]
