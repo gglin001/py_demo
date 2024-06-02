@@ -57,7 +57,7 @@ files = ["src/**/*.py", "tests/**/*.py"]
 # https://cibuildwheel.pypa.io/en/stable/options/
 [tool.cibuildwheel]
 build = "cp311-macosx_arm64 cp312-macosx_arm64 cp311-manylinux* cp312-manylinux*"
-skip = "musllinux* win*"
+skip = "i686* ppc64le* s390x*"
 
 # TODO: support more ruff rules
 # TODO: support more python tools
