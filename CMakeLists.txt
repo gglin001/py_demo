@@ -15,13 +15,19 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/py_demo/)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/py_demo/)
 
 # options
-option(USE_SYSTEM_LIBS "use system libs or not" OFF)
+option(USE_SYSTEM_LIBS "use system libs or not" ON)
+
+# find Python3 first
+# no `REQUIRED` attr for building with cibuildwheel
+find_package(Python3 COMPONENTS Interpreter Development)
+message("Python3: ${Python3_EXECUTABLE}")
+message("Python3_SITEARCH: ${Python3_SITEARCH}")
 
 include(FetchContent)
 set(FETCHCONTENT_QUIET FALSE)
 
 if(USE_SYSTEM_LIBS)
-  find_package(pybind11 CONFIG REQUIRED)
+  find_package(pybind11 CONFIG REQUIRED HINTS ${Python3_SITEARCH})
 else()
   # TODO: use nanobind instead ?
   # pybind11
@@ -37,10 +43,7 @@ else()
   endif()
 endif()
 
-# packages
-find_package(Python3 REQUIRED COMPONENTS Interpreter Development)
-message("Python3: ${Python3_EXECUTABLE}")
-message("Python3_SITEARCH: ${Python3_SITEARCH}")
+# other packages list here
 
 include_directories(csrc)
 add_subdirectory(csrc)
