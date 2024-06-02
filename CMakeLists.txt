@@ -27,6 +27,7 @@ include(FetchContent)
 set(FETCHCONTENT_QUIET FALSE)
 
 if(USE_SYSTEM_LIBS)
+  # TODO: is HINTS necessary ?
   find_package(pybind11 CONFIG REQUIRED HINTS ${Python3_SITEARCH})
 else()
   # TODO: use nanobind instead ?
