@@ -1,5 +1,13 @@
 ###############################################################################
 
+# only tested on macos(arm64) + colima(for docker)
+
+# apply binfmt first:
+# https://docs.docker.com/build/building/multi-platform/
+docker run --privileged --rm tonistiigi/binfmt --install all
+
+###############################################################################
+
 # cibuildwheel --print-build-identifiers
 cibuildwheel . --archs all --platform linux --print-build-identifiers
 cibuildwheel . --archs all --platform macos --print-build-identifiers
@@ -17,7 +25,8 @@ cibuildwheel . --archs aarch64 --platform linux
 cibuildwheel . --archs x86_64 --platform linux
 cibuildwheel . --archs x86_64,aarch64 --platform linux
 
-# TODO: support building cp3xx-macosx_arm64 on local env
-# cibuildwheel . --archs arm64 --platform macos
+# NOTE: download & install python-*.pkg following help info first
+# eg: https://www.python.org/ftp/python/3.12.3/python-3.12.3-macos11.pkg
+cibuildwheel . --archs arm64 --platform macos
 
 ###############################################################################
