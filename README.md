@@ -1,11 +1,13 @@
-# py_demo
+# py_sample
 
-demo project with Python & C++
+sample project with Python & C++
 
 ## install in editable mode
 
 ```sh
-pip install -e .
+# pip install -e .
+pip install --no-build-isolation -e .
+# pip install --no-build-isolation -e . -vvv
 ```
 
 for local debuging

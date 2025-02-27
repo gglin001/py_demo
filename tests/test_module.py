@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from py_demo.module import exp_func
+from py_sample.module import exp_func
 
 
 def test_log_func():

@@ -1,10 +1,10 @@
 from __future__ import annotations
 
-import py_demo
+import py_sample
 
 
 def test_mul():
     x0, x1 = 2, 3
-    y = py_demo.mul(x0, x1)
+    y = py_sample.mul(x0, x1)
     z = x0 * x1
     assert y == z

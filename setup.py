@@ -33,7 +33,7 @@ class CMakeBuild(build_ext):
         cmake_args = [
             f"-DCMAKE_BUILD_TYPE={cfg}",
             f"-DPython3_EXECUTABLE={sys.executable}",
-            f"-DCMAKE_INSTALL_PREFIX={HERE}/src/py_demo",
+            f"-DCMAKE_INSTALL_PREFIX={HERE}/src/py_sample",
         ]
         build_args = []
         # Adding CMake arguments set as environment variable
@@ -69,8 +69,8 @@ class CMakeBuild(build_ext):
             self.copy_file(src, dst)
 
         # TODO: copy other files
-        # src = os.path.join(HERE, 'src', 'py_demo', 'lib')
-        # dst = os.path.join(os.path.realpath(self.build_lib), 'py_demo', 'lib')
+        # src = os.path.join(HERE, 'src', 'py_sample', 'lib')
+        # dst = os.path.join(os.path.realpath(self.build_lib), 'py_sample', 'lib')
         # self.copy_tree(src, dst)
 
 
@@ -80,7 +80,7 @@ if __name__ == "__main__":
     skip_cmake = int(os.environ.get("SKIP_CMAKE", 0))
     extensions = []
     if not skip_cmake:
-        extensions.append(CMakeExtension("py_demo._C"))
+        extensions.append(CMakeExtension("py_sample._C"))
 
     cmdclass = {"build_ext": CMakeBuild}
     setup(
