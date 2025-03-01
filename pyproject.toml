@@ -38,7 +38,6 @@ testpaths = ["tests"]
 # https://docs.astral.sh/ruff/configuration/
 [tool.ruff]
 fix = true
-exclude = [".cmake-format.py"]
 
 [tool.ruff.lint]
 select = ["I", "E", "F"]
